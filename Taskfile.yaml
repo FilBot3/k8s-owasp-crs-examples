@@ -1,0 +1,24 @@
+---
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  GREETING: Hello, World!
+
+tasks:
+  default:
+    cmds:
+      - echo "{{.GREETING}}"
+    silent: true
+
+  podman-play:
+    desc: Podman Play Kube run the k8s Deployment manifest.
+    cmds:
+      - "podman play kube --build --replace k8s-owasp-crs-setup.yaml"
+
+  podman-down:
+    desc: Podman Play Kube stop the k8s Deployment.
+    cmds:
+      - "podman play kube --down k8s-owasp-crs-setup.yaml"
+...

@@ -1,0 +1,11 @@
+FROM docker.io/library/python:3.10-alpine
+
+RUN python -m pip install --upgrade pip
+
+RUN python -m pip install flask
+
+WORKDIR /app
+
+COPY ./phil_flask_app.py /app/phil_flask_app.py
+
+ENTRYPOINT ["flask", "--app", "phil_flask_app", "run", "--host=0.0.0.0"]
